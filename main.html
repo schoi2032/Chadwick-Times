@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chadwick Times - News For All</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #0056b3; text-align: center; }
+        .article-summary { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+        .article-summary:last-child { border-bottom: none; }
+        .article-summary h2 a { text-decoration: none; color: #333; }
+        .article-summary h2 a:hover { color: #007bff; }
+        .meta { font-size: 0.9em; color: #666; margin-top: 5px; }
+        footer { text-align: center; margin-top: 30px; font-size: 0.8em; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chadwick Times - News For All</h1>
+        <hr>
+        {% for article in articles %}
+            <div class="article-summary">
+                <h2><a href="/article/{{ article.id }}">{{ article.title }}</a></h2>
+                <p class="meta">By {{ article.author }} on {{ article.date }}</p>
+                <p>{{ article.content[:200] | safe }}...</p> {# Display first 200 chars as summary #}
+            </div>
+        {% endfor %}
+        <footer>
+            <p>&copy; 2023 Chadwick Times. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
